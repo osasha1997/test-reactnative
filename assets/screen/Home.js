@@ -13,7 +13,6 @@ export default function Home() {
         {name: 'Scholarship', key: '4'},
         {name: 'Certification', key: '5'},
     ]);
-    // const options = types.map((string) => <Options name={string}></Options>);
   return (
      <View>
         <Header/>
@@ -21,8 +20,8 @@ export default function Home() {
             {/* <ScrollView>
                 <Text>{options}</Text>
             </ScrollView> */}
-            <FlatList data={types} renderItem={({item}) => (
-                <Options name={item}></Options>
+            <FlatList horizontal data={types} renderItem={({item}) => (
+                <Options name={item.name}/>
             )}></FlatList>
         </View>
      </View>
@@ -38,5 +37,6 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         paddingTop: 5,
         paddingBottom: 5,
+        paddingLeft: 7,
     }
 })
