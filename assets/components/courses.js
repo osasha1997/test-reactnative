@@ -1,37 +1,40 @@
-import { StyleSheet, Text, View, FlatList, Button } from "react-native";
-import { useState } from "react";
-import React from "react";
-import People from "./people";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Image, FlatList } from "react-native";
+import Single from "./singleCourse";
 
-export default function Suggestions() {
-  const [people, setPeople] = useState([
+export default function courses(props) {
+  const [courses, setCourses] = useState([
     {
       image: require("../profile.png"),
-      name: "Rich Novak",
-      institute: "French School of Kuala Lumpur",
-      mutual: "8 Mutual Friends",
-      key: "1",
+      course: "Bachelor of Computer Science (Hons)",
+      institute: "The University of Melbourne",
+      key: 1,
     },
     {
       image: require("../profile.png"),
-      name: "Honda Takumi",
-      institute: "French School of Kuala Lumpur",
-      key: "2",
+      course: "Bachelor of Business Administration",
+      institute: "The University of Melbourne",
+      key: 2,
+    },
+    {
+      image: require("../profile.png"),
+      course: "Bachelor of Fine Arts",
+      institute: "The University of Melbourne",
+      key: 3,
     },
   ]);
   return (
     <View style={styles.bgwhite}>
       <View style={styles.row}>
-        <Text style={styles.heading}>People you may know</Text>
+        <Text style={styles.heading}>Top 10 Courses</Text>
       </View>
       <FlatList
-        data={people}
+        data={courses}
         renderItem={({ item }) => (
-          <People
-            name={item.name}
+          <Single
             link={item.image}
+            course={item.course}
             institute={item.institute}
-            mutual={item.mutual}
           />
         )}
       ></FlatList>
