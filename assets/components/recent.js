@@ -29,12 +29,13 @@ export default function Recent() {
         <Text style={styles.heading}>Recent searches</Text>
         <Text style={styles.clear}>Clear</Text>
       </View>
-      <FlatList
-        data={search}
-        renderItem={({ item }) => (
-          <Result search={item.search} link={item.image} type={item.type} />
-        )}
-      ></FlatList>
+      <View>
+        {search.map((item) => {
+          return(
+            <Result key={item.key} link={item.image} search={item.search} type={item.type}></Result>
+          )
+        })}
+      </View>
     </View>
   );
 }

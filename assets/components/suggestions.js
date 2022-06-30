@@ -24,17 +24,13 @@ export default function Suggestions() {
       <View style={styles.row}>
         <Text style={styles.heading}>People you may know</Text>
       </View>
-      <FlatList
-        data={people}
-        renderItem={({ item }) => (
-          <People
-            name={item.name}
-            link={item.image}
-            institute={item.institute}
-            mutual={item.mutual}
-          />
-        )}
-      ></FlatList>
+      <View>
+        {people.map((item) => {
+          return(
+            <People key={item.key} link={item.image} name={item.name} institute={item.institute} mutual={item.mutual}></People>
+          )
+        })}
+      </View>
       <Text style={styles.link}>See more</Text>
     </View>
   );

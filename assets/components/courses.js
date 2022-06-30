@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
-import Single from "./singleCourse";
+import SingleCourse from "./singleCourse";
 
 export default function courses(props) {
   const [courses, setCourses] = useState([
@@ -28,16 +28,13 @@ export default function courses(props) {
       <View style={styles.row}>
         <Text style={styles.heading}>Top 10 Courses</Text>
       </View>
-      <FlatList
-        data={courses}
-        renderItem={({ item }) => (
-          <Single
-            link={item.image}
-            course={item.course}
-            institute={item.institute}
-          />
-        )}
-      ></FlatList>
+      <View>
+        {courses.map((item) => {
+          return(
+            <SingleCourse key={item.key} link={item.image} course={item.course} institute={item.institute} mutual={item.mutual}></SingleCourse>
+          )
+        })}
+      </View>
       <Text style={styles.link}>See more</Text>
     </View>
   );
